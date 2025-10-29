@@ -1,12 +1,12 @@
 import TopCommentsCarousel from "./TopCommentsCarousel";
 import ChartsPanel from "./ChartsPanel";
-
+import topcmt from '../../assets/topcmt.png';
 const TopCommentsSection = () => {
   return (
     <section className="rounded-3xl border border-white/10 text-white m-6">
       {/* Header */}
       <div className="flex items-center gap-2 px-6 pt-5">
-        <span className="text-sky-400">🏅</span>
+        <img src={topcmt} alt="Top Comments" className="w-6 h-6" />
         <h2 className="text-lg font-semibold">TOP BÌNH LUẬN</h2>
       </div>
 

@@ -3,7 +3,13 @@ import thandenoiuocdi from '../../assets/movies/thandenoiuocdi.png';
 import lykinha from '../../assets/lykinha.jpg';
 import arowyl from '../../assets/arowyl.png';
 import arowvo from '../../assets/arowvo.png';
-export const RankRow = ({ index, poster, title, delta = '↗', pill }) => {
+import soinoinhat from '../../assets/soinoinhat.png';
+import yeuthichnhat from '../../assets/heartblue.png';
+import theloai from '../../assets/theloaihot.png';
+import binhluanmoi from '../../assets/cmtnew.png';
+import male from "../../assets/male.png";
+
+export const RankRow = ({ index, poster, title, delta, pill }) => {
   const renderDeltaIcon = (d, deltaColor) => {
     // image path (imported asset or public URL)
     if (typeof d === 'string' && (d.endsWith('.png') || d.endsWith('.jpg') || d.startsWith('/'))) {
@@ -73,28 +79,30 @@ const ChartsPanel = ({ hot = [], fav = [], tags = [] }) => {
     {
       avatar: lykinha,
       username: "Lý Nhã Kỳ",
-      gender: "♂",
+      gender: male,
       content: "xem lại nhớ vụ ecopark ở văn giang ngày xưa",
+      
       movie: "Tôi Mộng Giữa Ban Ngày"
     },
     {
       avatar: lykinha,
       username: "Lý Nhã Kỳ",
-      gender: "♂",
+      gender: male,
+      content: "T thề là coi phim nào t cũng xem tua, chỉ duy nhất phim này t không...",
+      movie: "Tôi Mộng Giữa Ban Ngày"
+    },
+
+    {
+      avatar: lykinha,
+      username: "Lý Nhã Kỳ",
+      gender: male,
       content: "T thề là coi phim nào t cũng xem tua, chỉ duy nhất phim này t không...",
       movie: "Tôi Mộng Giữa Ban Ngày"
     },
     {
       avatar: lykinha,
       username: "Lý Nhã Kỳ",
-      gender: "♂",
-      content: "T thề là coi phim nào t cũng xem tua, chỉ duy nhất phim này t không...",
-      movie: "Tôi Mộng Giữa Ban Ngày"
-    },
-    {
-      avatar: lykinha,
-      username: "Lý Nhã Kỳ",
-      gender: "♂",
+      gender: male,
       content: "xem lại nhớ vụ ecopark ở văn giang ngày xưa",
       movie: "Tôi Mộng Giữa Ban Ngày"
     },
@@ -104,7 +112,10 @@ const ChartsPanel = ({ hot = [], fav = [], tags = [] }) => {
   return (
   <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_1.1fr_0.8fr_1.2fr] divide-y lg:divide-y-0 lg:divide-x divide-white/8">
       {/* Sôi nổi nhất */}
-      <CardBox icon="📈" title="SÔI NỔI NHẤT">
+      <CardBox 
+      icon={<img src={soinoinhat} alt="Sôi nổi nhất" className="w-6 h-6" />}
+
+       title="SÔI NỔI NHẤT">
         <ol>
           {(hot.length ? hot : stub).map((it, i) => (
             <RankRow key={i} index={i + 1} title={it.title} poster={it.poster} delta={it.delta} />
@@ -114,7 +125,7 @@ const ChartsPanel = ({ hot = [], fav = [], tags = [] }) => {
       </CardBox>
 
       {/* Yêu thích nhất */}
-      <CardBox icon="💙" title="YÊU THÍCH NHẤT">
+      <CardBox icon={<img src={yeuthichnhat} alt="Yêu thích nhất" className="w-6 h-6" />} title="YÊU THÍCH NHẤT">
         <ol>
           {(fav.length ? fav : stub).map((it, i) => (
             <RankRow key={i} index={i + 1} title={it.title} poster={it.poster} delta={it.delta} />
@@ -124,7 +135,7 @@ const ChartsPanel = ({ hot = [], fav = [], tags = [] }) => {
       </CardBox>
 
       {/* Thể loại hot */}
-      <CardBox icon="🏷️" title="THỂ LOẠI HOT">
+      <CardBox icon={<img src={theloai} alt="Thể loại hot" className="w-6 h-6" />} title="THỂ LOẠI HOT">
         <ol>
           {(tags.length ? tags : tagPills).map((p, i) => (
             <RankRow key={i} index={i + 1}  pill={p} />
@@ -134,7 +145,7 @@ const ChartsPanel = ({ hot = [], fav = [], tags = [] }) => {
       </CardBox>
 
       {/* Bình luận mới (cột thứ 4) */}
-      <CardBox icon="⚡" title="BÌNH LUẬN MỚI">
+      <CardBox icon={<img src={binhluanmoi} alt="Bình luận mới" className="w-6 h-6" />} title="BÌNH LUẬN MỚI">
         <ul className="space-y-3">
           {cmtnew.map((cmt, i) => (
             <li key={i} className="rounded-xl bg-white/5 p-3">
@@ -143,12 +154,14 @@ const ChartsPanel = ({ hot = [], fav = [], tags = [] }) => {
                   <img src={cmt.avatar} alt={cmt.username} className="w-full h-full object-cover" />
                 </div>
                 <div className="min-w-0">
-                  <p className="text-sm">
+                  <p className="text-sm ">
                     <span className="text-white font-medium">{cmt.username}</span>
-                    <span className="mx-1 text-sky-400">{cmt.gender}</span>
+                    <span ><img className="mx-1 w-4 h-4 inline" src={cmt.gender} alt={cmt.gender} /></span>
                     <span className="text-gray-300">{cmt.content}</span>
                   </p>
-                  <p className="text-xs text-gray-500 mt-1">{cmt.movie}</p>
+                  <p className="text-xs text-gray-500 mt-1">
+                    {/* <img src={cmt.img} alt="" className="inline-block w-4 h-4 mr-1" /> */}
+                  {cmt.movie}</p>
                 </div>
               </div>
             </li>
