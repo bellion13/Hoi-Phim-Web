@@ -16,11 +16,13 @@ const MovieTopCard = ({
       {/* Poster */}
       <div className="relative overflow-hidden rounded-lg sm:rounded-xl md:rounded-2xl">
         {/* Image with hover effect */}
-        <div className=" relative">
+        <div className="relative">
           <img 
             src={poster} 
             alt={title} 
-            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" 
+            style={{ clipPath: "polygon(0% 6%, 100% 0%, 100% 100%, 0% 100%)", 
+            }}
+            className="w-full h-full object-cover transition-transform duration-300 " 
           />
           {/* Overlay on hover */}
           <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-200" />
@@ -54,6 +56,7 @@ const MovieTopCard = ({
           <span className="font-semibold text-white">T16</span> • Phần 1 • Tập 13
         </p>
       </div>
+      
     </Link>
   );
 };

@@ -9,9 +9,11 @@ import MovieTopList from '../components/MovieTop/MovieTopList'
 import CinematicHighlights from '../components/CinematicHighlight/CinematicHighlights'
 import ComingSoon from '../components/ComingSoon/ComingSoon'
 import NewAnime from '../components/NewAnime/NewAnime'
+
 const Home = () => {
   return (
     <div className='pb-20'>
+
       <Hero />
       <Topics />
       <Continue />
